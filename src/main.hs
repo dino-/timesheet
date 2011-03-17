@@ -6,8 +6,13 @@ import Data.List
 import Data.Maybe
 import Control.Arrow
 import System.Environment
+import System.Exit
+import System.IO ( BufferMode ( NoBuffering )
+   , hSetBuffering, stdout, stderr )
 import Text.Printf
 import Text.Regex
+
+import Timesheet.Opts
 
 
 data Day = Day String String Float
@@ -53,41 +58,36 @@ displayWeek w = do
    printf "total:         %5.2f\n\n" weekTotal
 
 
+weeksToDisplay :: Options -> [Week] -> [Week]
+weeksToDisplay opts allWs =
+   case opts of
+      Options True _ _     -> allWs
+      Options _    _ numWs -> take numWs allWs
+
+
 main :: IO ()
 main = do
-   (path:_) <- getArgs
+   -- No buffering, it messes with the order of output
+   mapM_ (flip hSetBuffering NoBuffering) [stdout, stderr]
 
-   -- Turn all lines into a list of Maybe Day, blanks are Nothing
-   -- and serve to signify week divisions
-   parsedLines <- fmap (map parseLine . lines) $ readFile path
+   (opts, paths) <- getArgs >>= parseOpts >>= either exitWith return
 
-   -- Turn the list into a [[Day]] where each sublist is a week
-   let weeks = filter (not . null) . map catMaybes
-         . groupBy (\x y -> isJust x && isJust y) $ parsedLines
+   ec <- if ((optHelp opts) || (null paths))
+      then do
+         putStrLn usageText
+         return ExitSuccess
+      else do
+         -- Turn all lines into a list of Maybe Day, blanks are Nothing
+         -- and serve to signify week divisions
+         parsedLines <- fmap (map parseLine . lines)
+            $ readFile . head $ paths
 
-   mapM_ displayWeek . take 1 $ weeks
+         -- Turn the list into a [[Day]] where each sublist is a week
+         let weeks = filter (not . null) . map catMaybes
+               . groupBy (\x y -> isJust x && isJust y) $ parsedLines
 
+         mapM_ displayWeek $ weeksToDisplay opts weeks
 
-{-
+         return ExitSuccess
 
-Example data. Make a file looking like below. Days in each week in
-order, but the weeks themselves in reverse order. The blank line
-following EACH WEEK is important.
-
-Days can be skipped (like weekends)
-There can be one or more time ranges within each day as shown
-
------
-2011-03-12 Sa  10:00-14:00
-2011-03-13 Su  10:00-13:00
-2011-03-14 Mo  09:00-11:00
-2011-03-15 Tu  09:00-11:30  12:15-17:15  18:30-22:00
-2011-03-16 We  09:00-12:00  13:00-13:30
-
-2011-03-08 Tu  13:30-17:30
-2011-03-09 We  09:00-12:00  13:30-19:00
-2011-03-10 Th  08:30-11:45  13:30-16:30
-2011-03-11 Fr  09:00-10:15
-
------
--}
+   exitWith ec
