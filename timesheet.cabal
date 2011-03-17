@@ -17,5 +17,5 @@ tested-with:         GHC>=6.12.3
 executable           timesheet
    main-is:          main.hs
    hs-source-dirs:   src
-   build-depends:    base >= 3 && < 5
+   build-depends:    base >= 3 && < 5, regex-compat
    ghc-options:      -Wall
