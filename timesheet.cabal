@@ -1,0 +1,21 @@
+name:                timesheet
+version:             1.0.0.0
+cabal-version:       >= 1.2
+build-type:          Simple
+license:             BSD3
+license-file:        LICENSE
+copyright:           2011 Dino Morelli
+author:              Dino Morelli
+maintainer:          Dino Morelli <dino@ui3.info>
+stability:           experimental
+homepage:            http://foo/bar/baz.html
+synopsis:            Foo
+description:         Bar Baz
+category:            Unknown
+tested-with:         GHC>=6.12.3
+
+executable           timesheet
+   main-is:          main.hs
+   hs-source-dirs:   src
+   build-depends:    base >= 3 && < 5
+   ghc-options:      -Wall
