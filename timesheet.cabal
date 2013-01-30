@@ -7,12 +7,12 @@ license-file:        LICENSE
 copyright:           2011-2013 Dino Morelli
 author:              Dino Morelli
 maintainer:          Dino Morelli <dino@ui3.info>
-stability:           experimental
+stability:           stable
 homepage:            http://foo/bar/baz.html
 synopsis:            Foo
 description:         Bar Baz
 category:            Unknown
-tested-with:         GHC>=6.12.3
+tested-with:         GHC >= 7.6.1
 
 executable           timesheet
    main-is:          main.hs
