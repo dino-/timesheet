@@ -87,5 +87,5 @@ usageText = (usageInfo header options) ++ "\n" ++ footer
          , ""
          , "-----"
          , ""
-         , "Version 1.0.0.0  Dino Morelli <dino@ui3.info>"
+         , "Version 1.1  Dino Morelli <dino@ui3.info>"
          ]
