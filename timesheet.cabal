@@ -9,8 +9,8 @@ author:              Dino Morelli
 maintainer:          Dino Morelli <dino@ui3.info>
 stability:           stable
 homepage:            http://foo/bar/baz.html
-synopsis:            Foo
-description:         Bar Baz
+synopsis:            Add up timesheet values
+description:         Add up timesheet values
 category:            Unknown
 tested-with:         GHC >= 7.6.1
 
