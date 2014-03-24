@@ -3,7 +3,7 @@
 
 ## Synopsis
 
-Add up timesheet values
+Add up timesheet values (Haskell)
 
 
 ## Description
