@@ -1,8 +1,7 @@
 #! /usr/bin/env runhaskell
 
--- Copyright: 2010 Ren Hoek
 -- License: BSD3 (see LICENSE)
--- Author: Ren Hoek <ren@spumco.co.dk>
+-- Author: Dino Morelli <dino@ui3.info>
 
 import Distribution.Simple
 
