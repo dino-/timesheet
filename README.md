@@ -39,8 +39,8 @@ Into this output:
 
 ## Getting source
 
-- Get the source with darcs: `$ darcs get http://ui3.info/darcs/timesheet`
-- If you're just looking, [browse the source](http://ui3.info/darcs/timesheet)
+- Get the source with darcs: `$ darcs get http://hub.darcs.net/dino/timesheet`
+- If you're just looking, [browse the source](http://hub.darcs.net/dino/timesheet)
 
 And once you have it, building the usual way:
 

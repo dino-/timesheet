@@ -14,6 +14,10 @@ description:         Add up hours for days and weeks from a simple text file for
 category:            Unknown
 tested-with:         GHC >= 7.6.1
 
+source-repository    head
+   type:             darcs
+   location:         http://hub.darcs.net/dino/timesheet
+
 executable           timesheet
    main-is:          main.hs
    hs-source-dirs:   src
