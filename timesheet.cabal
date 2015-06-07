@@ -8,7 +8,7 @@ copyright:           2011-2014 Dino Morelli
 author:              Dino Morelli
 maintainer:          Dino Morelli <dino@ui3.info>
 stability:           stable
-homepage:            http://ui3.info/d/proj/timesheet.html
+homepage:            http://hub.darcs.net/dino/timesheet
 synopsis:            Add up timesheet values
 description:         Add up hours for days and weeks from a simple text file format.
 category:            Unknown
