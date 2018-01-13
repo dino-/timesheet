@@ -3,12 +3,12 @@
 
 ## Synopsis
 
-Add up timesheet values (Haskell)
+Add up timesheet values from a simple text file format (Haskell)
 
 
 ## Description
 
-Add up hours for days and weeks from a simple text file format.
+Add up timesheet hours for days and weeks from a simple text file format.
 
 I needed a simple way to record hours worked during the day and across weeks in a simple text file but allow them to be automatically added together. And preferably without something heavy and graphical like a spreadsheet program.
 
@@ -39,14 +39,13 @@ Into this output:
 
 ## Getting source
 
-- Get the source with darcs: `$ darcs get http://hub.darcs.net/dino/timesheet`
-- If you're just looking, [browse the source](http://hub.darcs.net/dino/timesheet)
+- Get the source with git: `$ git clone https://github.com/dino-/timesheet.git`
+- If you're just looking, [browse the source](https://github.com/dino-/timesheet)
 
 And once you have it, building the usual way:
 
-    $ cabal configure
-    $ cabal build
-    $ cabal install
+    $ stack build
+    $ stack install
 
 
 ## Contact

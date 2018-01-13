@@ -2,24 +2,26 @@ name:                timesheet
 cabal-version:       >= 1.8
 version:             1.1
 build-type:          Simple
-license:             BSD3
+license:             ISC
 license-file:        LICENSE
-copyright:           2011-2014 Dino Morelli
+copyright:           2011-2018 Dino Morelli
 author:              Dino Morelli
 maintainer:          Dino Morelli <dino@ui3.info>
 stability:           stable
-homepage:            http://hub.darcs.net/dino/timesheet
+homepage:            https://github.com/dino-/timesheet
 synopsis:            Add up timesheet values
 description:         Add up hours for days and weeks from a simple text file format.
 category:            Unknown
 tested-with:         GHC >= 7.6.1
+extra-source-files:  stack.yaml
 
 source-repository    head
-   type:             darcs
-   location:         http://hub.darcs.net/dino/timesheet
+   type:             git
+   location:         https://github.com/dino-/timesheet.git
 
 executable           timesheet
    main-is:          main.hs
    hs-source-dirs:   src
    build-depends:    base >= 3 && < 5, regex-compat
    ghc-options:      -Wall
+   other-modules:    Timesheet.Opts
