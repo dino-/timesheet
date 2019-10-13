@@ -12,7 +12,7 @@ homepage:            https://github.com/dino-/timesheet
 synopsis:            Add up timesheet values
 description:         Add up hours for days and weeks from a simple text file format.
 category:            Unknown
-tested-with:         GHC >= 7.6.1
+tested-with:         GHC >= 8.6.5
 extra-source-files:  stack.yaml
 
 source-repository    head
@@ -24,4 +24,6 @@ executable           timesheet
    hs-source-dirs:   src
    build-depends:    base >= 3 && < 5, regex-compat
    ghc-options:      -Wall
-   other-modules:    Timesheet.Opts
+   other-modules:
+      Paths_timesheet
+      Timesheet.Opts
