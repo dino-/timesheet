@@ -1,0 +1,31 @@
+name: timesheet
+version: '1.3'
+license: ISC
+copyright: 2011-2018 Dino Morelli
+author: Dino Morelli
+maintainer: Dino Morelli <dino@ui3.info>
+homepage: https://github.com/dino-/timesheet
+synopsis: Add up timesheet values
+description: Add up hours for days and weeks from a simple text file format.
+category: Unknown
+tested-with: GHC >= 8.6.5
+extra-source-files:
+- stack.yaml
+
+github: dino-/timesheet
+
+ghc-options:
+- -fwarn-tabs
+- -Wall
+- -Wcompat
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wredundant-constraints
+
+executables:
+  timesheet:
+    main: main.hs
+    source-dirs: src
+    dependencies:
+    - base >= 4.8 && < 5.0
+    - regex-compat
