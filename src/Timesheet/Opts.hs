@@ -9,6 +9,8 @@ module Timesheet.Opts
    where
 
 import Data.Maybe
+import Data.Version ( showVersion )
+import Paths_timesheet ( version )
 import System.Console.GetOpt
 import System.Exit
 
@@ -86,5 +88,5 @@ usageText = (usageInfo header options) ++ "\n" ++ footer
          , ""
          , "-----"
          , ""
-         , "Version 1.1  Dino Morelli <dino@ui3.info>"
+         , "Version " ++ (showVersion version) ++ "  Dino Morelli <dino@ui3.info>"
          ]
