@@ -28,4 +28,7 @@ executables:
     source-dirs: src
     dependencies:
     - base >= 4.8 && < 5.0
+    - ansi-wl-pprint
+    - heredoc
+    - optparse-applicative
     - regex-compat

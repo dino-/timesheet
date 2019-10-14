@@ -4,8 +4,6 @@
 import Data.List
 import Data.Maybe
 import Control.Arrow
-import System.Environment
-import System.Exit
 import System.IO ( BufferMode ( NoBuffering )
    , hSetBuffering, stdout, stderr )
 import Text.Printf
@@ -60,33 +58,24 @@ displayWeek w = do
 weeksToDisplay :: Options -> [Week] -> [Week]
 weeksToDisplay opts allWs =
    case opts of
-      Options True _ _     -> allWs
-      Options _    _ numWs -> take numWs allWs
+      Options True _     _ -> allWs
+      Options _    numWs _ -> take numWs allWs
 
 
 main :: IO ()
 main = do
-   -- No buffering, it messes with the order of output
-   mapM_ (flip hSetBuffering NoBuffering) [stdout, stderr]
+  -- No buffering, it messes with the order of output
+  mapM_ (flip hSetBuffering NoBuffering) [stdout, stderr]
 
-   (opts, paths) <- getArgs >>= parseOpts >>= either exitWith return
+  opts <- parseOpts
 
-   ec <- if ((optHelp opts) || (null paths))
-      then do
-         putStrLn usageText
-         return ExitSuccess
-      else do
-         -- Turn all lines into a list of Maybe Day, blanks are Nothing
-         -- and serve to signify week divisions
-         parsedLines <- fmap (map parseLine . lines)
-            $ readFile . head $ paths
+  -- Turn all lines into a list of Maybe Day, blanks are Nothing
+  -- and serve to signify week divisions
+  parsedLines <- fmap (map parseLine . lines)
+    $ readFile . optTimesheetFile $ opts
 
-         -- Turn the list into a [[Day]] where each sublist is a week
-         let weeks = filter (not . null) . map catMaybes
-               . groupBy (\x y -> isJust x && isJust y) $ parsedLines
+  -- Turn the list into a [[Day]] where each sublist is a week
+  let weeks = filter (not . null) . map catMaybes
+        . groupBy (\x y -> isJust x && isJust y) $ parsedLines
 
-         mapM_ displayWeek $ weeksToDisplay opts weeks
-
-         return ExitSuccess
-
-   exitWith ec
+  mapM_ displayWeek $ weeksToDisplay opts weeks
