@@ -1,6 +1,3 @@
--- License: ISC (see LICENSE)
--- Author: Dino Morelli <dino@ui3.info>
-
 import Data.List
 import Data.Maybe
 import Control.Arrow
