@@ -1,12 +1,15 @@
-import Data.List
-import Data.Maybe
-import Control.Arrow
+import Data.List ( groupBy )
+import Data.Maybe ( catMaybes, isJust )
+import Control.Arrow ( (&&&) )
 import System.IO ( BufferMode ( NoBuffering )
    , hSetBuffering, stdout, stderr )
-import Text.Printf
-import Text.Regex
+import Text.Printf ( printf )
+import Text.Regex ( matchRegex, mkRegex, splitRegex )
 
 import Timesheet.Opts
+  ( Options(..), optTimesheetFile
+  , parseOpts
+  )
 
 
 data Day = Day String String Float
