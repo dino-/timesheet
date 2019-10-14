@@ -62,14 +62,19 @@ parseOpts = do
 footer' :: InfoMod a
 footer' = footerDoc . Just . string $ printf content (showVersion version)
     where content = init . tail $ [here|
-Example data
+Example data file
 
-Make a file looking like below. Days in each week in order, but the weeks
-themselves in reverse order. The blank line following EACH WEEK is
-important.
+Make a file similar to this example. Days in each week in ascending order, but
+the weeks themselves in descending order. The reason for this is the software
+defaults to processing only the topmost week in the file so it's convenient to
+make this your most recent week.
 
-Days can be skipped (like weekends)
-There can be one or more time ranges within each day as shown
+The blank line following EACH WEEK is required, including the blank at the end
+of the file.
+
+Days can be skipped (weekends, days off)
+There can be one or more time ranges within each day as shown. A time range is
+just a pair of times separated by a hyphen or space.
 
 -----
 2011-03-12 Sa  10:00-14:00
@@ -78,10 +83,10 @@ There can be one or more time ranges within each day as shown
 2011-03-15 Tu  09:00-11:30  12:15-17:15  18:30-22:00
 2011-03-16 We  09:00-12:00  13:00-13:30
 
-2011-03-08 Tu  13:30-17:30
-2011-03-09 We  09:00-12:00  13:30-19:00
-2011-03-10 Th  08:30-11:45  13:30-16:30
-2011-03-11 Fr  09:00-10:15
+2011-03-07 Mo  13:30 17:30
+2011-03-09 We  09:00 12:00  13:30 19:00
+2011-03-10 Th  08:30 11:45  13:30 16:30
+2011-03-11 Fr  09:00 10:15
 
 -----
 
