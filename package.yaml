@@ -39,3 +39,16 @@ executables:
     - heredoc
     - optparse-applicative
     - timesheet
+
+tests:
+  timesheet-test-suite:
+    source-dirs: src/test
+    main: Main.hs
+    dependencies:
+    - tasty
+    - tasty-hunit
+    - timesheet
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N

@@ -1,6 +1,7 @@
 module Timesheet
   ( Day (..), Week
   , parse
+  , parseLine
   )
   where
 
@@ -11,6 +12,7 @@ import Text.Regex ( matchRegex, mkRegex, splitRegex )
 
 
 data Day = Day String String Float
+  deriving (Eq, Show)
 
 type Week = [Day]
 
