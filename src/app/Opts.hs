@@ -1,7 +1,6 @@
-{-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes #-}
 
-module Timesheet.Opts
+module Opts
   ( Options (..)
   , parseOpts
   )

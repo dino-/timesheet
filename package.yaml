@@ -22,13 +22,20 @@ ghc-options:
 - -Wincomplete-uni-patterns
 - -Wredundant-constraints
 
+dependencies:
+- base >= 4.8 && < 5.0
+
+library:
+  source-dirs: src/lib
+  dependencies:
+  - regex-compat
+
 executables:
   timesheet:
-    main: main.hs
-    source-dirs: src
+    source-dirs: src/app
+    main: Main.hs
     dependencies:
-    - base >= 4.8 && < 5.0
     - ansi-wl-pprint
     - heredoc
     - optparse-applicative
-    - regex-compat
+    - timesheet
