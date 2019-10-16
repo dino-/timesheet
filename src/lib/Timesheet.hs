@@ -8,6 +8,7 @@ module Timesheet
 import Data.List ( groupBy )
 import Data.Maybe ( catMaybes, isJust )
 import Control.Arrow ( (&&&) )
+import Safe ( readNote, tailNote )
 import Text.Regex ( matchRegex, mkRegex, splitRegex )
 
 
@@ -27,10 +28,13 @@ listToPairs _        = []
 
 -- Parse a time string in the form "hh:mm" into a Float hh.mmmm
 parseTime :: String -> Float
+parseTime "" = 0.0
 parseTime s = h + (m / 60)
    where
-      (h, m) = (read . takeWhile (/= ':') &&& 
-         read . tail . dropWhile (/= ':')) s
+      (h, m) = (readNote note . takeWhile (/= ':') &&&
+         readNote note . tailNote note . dropWhile (/= ':')) s
+
+      note = "Failed to parse: \"" ++ s ++ "\""
 
 
 {- Parse a line from our data file format into a Day data
