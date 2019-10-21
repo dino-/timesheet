@@ -27,6 +27,8 @@ weeksToDisplay opts allWs =
       Options _    numWs _ -> take numWs allWs
 
 
+{-# ANN main "HLint: ignore Use section" #-}
+
 main :: IO ()
 main = do
   -- No buffering, it messes with the order of output

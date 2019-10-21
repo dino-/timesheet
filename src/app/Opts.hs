@@ -53,7 +53,7 @@ parseOpts :: IO Options
 parseOpts = do
   pn <- getProgName
   execParser $ info (parser <**> helper <**> versionHelper pn)
-    (  (header $ pn ++ " - Add up timesheet hours")
+    (  header (pn ++ " - Add up timesheet hours")
     <> footer'
     )
 
